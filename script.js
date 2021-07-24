@@ -1,7 +1,7 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
- *    HSB, background, color, collideRectRect, colorMode, createCanvas, fill, frameRate, keyCode, height,
- *    loop, noFill, noLoop, noStroke, random, rect, round, stroke, sqrt, text, width
+ *    HSB, background, collideRectRect, colorMode, createCanvas, fill, frameRate, keyCode,
+ *    height, loop, noLoop, noStroke, random, rect, round, stroke, text, width
  *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW
  */
 
@@ -23,15 +23,18 @@ function draw() {
 
   snake.moveSelf();
   snake.showSelf();
-  snake.checkCollisions();
-  snake.checkApples();
+  snake.checkCollideTail();
+  snake.checkCollideApple();
 
   apple.showSelf();
 
   displayScore();
 }
 
-function displayScore() {}
+function displayScore() {
+  fill(0);
+  text(`Score: ${score}`, 10, 20);
+}
 
 class Snake {
   constructor() {
@@ -58,14 +61,13 @@ class Snake {
 
   showSelf() {
     stroke(240, 100, 100);
-    noFill();
     rect(this.x, this.y, this.size, this.size);
     noStroke();
   }
 
-  checkApples() {}
+  checkCollideApple() {}
 
-  checkCollisions() {}
+  checkCollideTail() {}
 
   extendTail() {}
 }
@@ -77,7 +79,7 @@ class Apple {
 }
 
 function keyPressed() {
-  console.log("key pressed: ", keyCode);
+  console.log("Key pressed: ", keyCode);
   if (keyCode === UP_ARROW && snake.direction != "S") {
     snake.direction = "N";
   } else if (keyCode === DOWN_ARROW && snake.direction != "N") {
