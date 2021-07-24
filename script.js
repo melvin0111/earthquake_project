@@ -72,6 +72,12 @@ class Snake {
   extendTail() {}
 }
 
+class TailSegment {
+  constructor() {}
+
+  showSelf() {}
+}
+
 class Apple {
   constructor() {}
 
@@ -93,8 +99,15 @@ function keyPressed() {
   }
 }
 
-function restartGame() {}
+function restartGame() {
+  score = 0;
+  snake = new Snake();
+  apple = new Apple();
+  loop();
+}
 
 function gameOver() {
-  
+  fill(0);
+  text("GAME OVER", 10, 40);
+  noLoop();
 }
