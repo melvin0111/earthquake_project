@@ -95,4 +95,6 @@ function keyPressed() {
 
 function restartGame() {}
 
-function gameOver() {}
+function gameOver() {
+  
+}
