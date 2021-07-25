@@ -39,6 +39,19 @@ function displayScore() {
   text(`Score: ${score}`, 10, 20);
 }
 
+function restartGame() {
+  score = 0;
+  snake = new Snake();
+  apple = new Apple();
+  loop();
+}
+
+function gameOver() {
+  fill(0);
+  text("GAME OVER", 10, 40);
+  noLoop();
+}
+
 class Snake {
   constructor() {
     this.size = 10;
@@ -100,17 +113,4 @@ function keyPressed() {
   } else {
     console.log("Error: invalid key");
   }
-}
-
-function restartGame() {
-  score = 0;
-  snake = new Snake();
-  apple = new Apple();
-  loop();
-}
-
-function gameOver() {
-  fill(0);
-  text("GAME OVER", 10, 40);
-  noLoop();
 }
