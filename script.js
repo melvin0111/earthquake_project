@@ -24,12 +24,12 @@ function setup() {
 function draw() {
   background(backgroundColor);
 
+  apple.showSelf();
+
   snake.moveSelf();
   snake.showSelf();
   snake.checkCollideTail();
   snake.checkCollideApple();
-
-  apple.showSelf();
 
   displayScore();
 }
