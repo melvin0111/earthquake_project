@@ -60,29 +60,17 @@ class Snake {
     } else {
       console.log("Error: invalid direction");
     }
-
-    // Create a new tail segment at the new x and y position
-    // Add the new tail segment to the tail array
-    // Remove the last segment from the tail array
   }
 
   showSelf() {
     stroke(240, 100, 100);
     rect(this.x, this.y, this.size, this.size);
     noStroke();
-
-    // For each tail segment, draw it
   }
 
-  checkCollideApple() {
-    // If the head of the snake collides with the apple:
-    // Increment the score
-    // Make a new apple
-    // Extend the tail
-  }
+  checkCollideApple() {}
 
-  checkCollideTail() {    
-  }
+  checkCollideTail() {}
 
   extendTail() {}
 }
