@@ -1,6 +1,6 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
- *    HSB, background, collideRectRect, colorMode, createCanvas, fill, frameRate, keyCode,
+ *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, keyCode,
  *    height, loop, noLoop, noStroke, random, rect, round, stroke, text, width
  *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW
  */
@@ -59,6 +59,8 @@ class Snake {
     this.y = height - 10;
     this.direction = "N";
     this.speed = 12;
+    let ts = new TailSegment(this.x, this.y);
+    this.tail = [ts];
   }
 
   moveSelf() {
@@ -73,31 +75,96 @@ class Snake {
     } else {
       console.log("Error: invalid direction");
     }
+
+    let newTS = new TailSegment(this.x, this.y);
+    this.tail.unshift(newTS);
+    this.tail.pop();
   }
 
   showSelf() {
+    fill(0);
     stroke(240, 100, 100);
     rect(this.x, this.y, this.size, this.size);
     noStroke();
+
+    for (let ts of this.tail) {
+      ts.showSelf();
+    }
   }
 
-  checkCollideApple() {}
+  checkCollideApple() {
+    let hit = collideRectRect(
+      this.x,
+      this.y,
+      this.size,
+      this.size,
+      apple.x,
+      apple.y,
+      apple.size,
+      apple.size
+    );
+    if (hit) {
+      score += 1;
+      apple = new Apple();
+      this.extendTail();
+    }
+  }
 
-  checkCollideTail() {}
+  checkCollideTail() {
+    if (this.tail.length === 1) {
+      return;
+    }
 
-  extendTail() {}
+    for (let i = 1; i < this.tail.length; i++) {
+      let ts = this.tail[i];
+      let hit = collideRectRect(
+        ts.x,
+        ts.y,
+        ts.size,
+        ts.size,
+        this.x,
+        this.y,
+        this.size,
+        this.size
+      );
+      if (hit) {
+        gameOver();
+      }
+    }
+  }
+
+  extendTail() {
+    // [ts1, ts2, ts3]: length = 3
+    let placeholderTS = new TailSegment(null, null);
+    this.tail.push(placeholderTS);
+  }
 }
 
 class TailSegment {
-  constructor() {}
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.size = 10;
+  }
 
-  showSelf() {}
+  showSelf() {
+    fill(0);
+    rect(this.x, this.y, this.size, this.size);
+  }
 }
 
 class Apple {
-  constructor() {}
+  constructor() {
+    let size = 10;
+    this.x = random(width - size);
+    this.y = random(height - size);
+    this.size = size;
+  }
 
-  showSelf() {}
+  showSelf() {
+    fill(color("red"));
+    rect(this.x, this.y, this.size, this.size);
+  }
 }
 
 function keyPressed() {
