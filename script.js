@@ -9,6 +9,7 @@ let backgroundColor;
 let snake;
 let apple;
 let score;
+let curColor;
 
 function setup() {
   createCanvas(400, 400);
@@ -19,6 +20,7 @@ function setup() {
   snake = new Snake();
   apple = new Apple();
   score = 0;
+  curColor = 0;
 }
 
 function draw() {
@@ -77,10 +79,10 @@ class Snake {
     }
 
     if (this.x >= 400) {
-      this.x = 0;
+      this.x = 20;
     }
     if (this.y >= 400) {
-      this.y = 0;
+      this.y = 20;
     }
     if (this.x <= 0) {
       this.x = 400;
@@ -154,10 +156,13 @@ class TailSegment {
     this.x = x;
     this.y = y;
     this.size = 10;
+    this.color = curColor;
+    curColor = (curColor + 10) % 360;
   }
 
   showSelf() {
     fill(0);
+    fill(curColor, 180, 180);
     rect(this.x, this.y, this.size, this.size);
   }
 }
