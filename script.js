@@ -1,7 +1,7 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
- *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, keyCode,
- *    height, loop, noLoop, noStroke, random, rect, round, stroke, text, width
+ *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate,
+ *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width
  *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW
  */
 
@@ -76,6 +76,19 @@ class Snake {
       console.log("Error: invalid direction");
     }
 
+    if (this.x >= 400) {
+      this.x = 0;
+    }
+    if (this.y >= 400) {
+      this.y = 0;
+    }
+    if (this.x <= 0) {
+      this.x = 400;
+    }
+    if (this.y <= 0) {
+      this.y = 400;
+    }
+    
     let newTS = new TailSegment(this.x, this.y);
     this.tail.unshift(newTS);
     this.tail.pop();
@@ -111,10 +124,6 @@ class Snake {
   }
 
   checkCollideTail() {
-    if (this.tail.length === 1) {
-      return;
-    }
-
     for (let i = 1; i < this.tail.length; i++) {
       let ts = this.tail[i];
       let hit = collideRectRect(
@@ -177,6 +186,9 @@ function keyPressed() {
     snake.direction = "E";
   } else if (keyCode === LEFT_ARROW && snake.direction != "E") {
     snake.direction = "W";
+  } else if (keyCode === 32) {
+    // Space key
+    restartGame();
   } else {
     console.log("Error: invalid key");
   }
