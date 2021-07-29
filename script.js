@@ -51,7 +51,7 @@ function setup() {
 function draw(){
   clear();
   if(delta < 1){
-    delta += 0.2; 
+    delta += 1; 
   } else {
     delta = 0; 
     coordinate ++; 
