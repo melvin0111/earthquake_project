@@ -2,7 +2,7 @@
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width
- *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector
+ *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
 let canvas;
@@ -20,6 +20,7 @@ let destination;
 let destinationVector;
 
 let taxiPosition;
+let size;
 
 const options = {
   lat: 40.73447,
@@ -34,7 +35,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(800, 700);
+  canvas = createCanvas(600, 600);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   tripsCoordinates = myMap.geoJSON(data, "LineString");
@@ -44,9 +45,14 @@ function setup() {
         allCoordinates.push(coordinate)
       })
   });
-
+  
+  size = createSlider(5, 20);
+  size.position(10, 610);
+  size.style('width', '80px');
+  
   //myMap.onChange(drawPoints);
 }
+
 
 function draw(){
   clear();
@@ -64,7 +70,7 @@ function draw(){
 
   taxiPosition = originVector.lerp(destinationVector, delta);
   fill(255,255,0);
-  ellipse(taxiPosition.x, taxiPosition.y, 15, 15);
+  ellipse(taxiPosition.x, taxiPosition.y, size.value(), size.value());
 }
 
 function drawPoints(){
