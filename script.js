@@ -22,6 +22,7 @@ let destinationVector;
 let taxiPosition;
 let size;
 let speed;
+let color;
 
 const options = {
   lat: 40.73447,
@@ -49,11 +50,15 @@ function setup() {
   
   size = createSlider(5, 20);
   size.position(10, 610);
-  size.style('width', '80px');
+  size.style('width', '300px');
   
   speed = createSlider(0.2, 1, 0.2, 0.01);
   speed.position(10, 650);
-  speed.style('width', '80px');
+  speed.style('width', '300px');
+  
+  color = createSlider(0, 250);
+  color.position(10, 690);
+  color.style('width', '300px');
   
   //myMap.onChange(drawPoints);
 }
@@ -74,7 +79,8 @@ function draw(){
   destinationVector = createVector(destination.x, destination.y);
 
   taxiPosition = originVector.lerp(destinationVector, delta);
-  fill(255,255,0);
+  colorMode(HSB)
+  fill(color.value(),100,100);
   ellipse(taxiPosition.x, taxiPosition.y, size.value(), size.value());
 }
 
