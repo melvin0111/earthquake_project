@@ -21,6 +21,7 @@ let destinationVector;
 
 let taxiPosition;
 let size;
+let speed;
 
 const options = {
   lat: 40.73447,
@@ -50,6 +51,10 @@ function setup() {
   size.position(10, 610);
   size.style('width', '80px');
   
+  speed = createSlider(0.2, 1, 0.2, 0.01);
+  speed.position(10, 650);
+  speed.style('width', '80px');
+  
   //myMap.onChange(drawPoints);
 }
 
@@ -57,7 +62,7 @@ function setup() {
 function draw(){
   clear();
   if(delta < 1){
-    delta += 1; 
+    delta += speed.value(); 
   } else {
     delta = 0; 
     coordinate ++; 
