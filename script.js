@@ -51,8 +51,12 @@ function draw(){
 }
 
 class Earthquake {
-  constructor() {
-    this.time = 'date';
-    this.
+  constructor(date, time, latitude, longitude, type, magnitude) {
+    this.date = date;
+    this.time = time;
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.type = type;
+    this.magnitude = magnitude;
   }
 }
