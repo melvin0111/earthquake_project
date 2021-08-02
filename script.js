@@ -11,6 +11,8 @@
  *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
+let mode;
+
 let canvas;
 let myMap;
 let tripsCoordinates;
@@ -39,7 +41,7 @@ const options = {
 const mappa = new Mappa('Leaflet');
 
 function preload() {
-  data = loadJSON('./assets/earthquake_data.geojson');
+  data = loadJSON('assets/earthquake_data.geojson');
 }
 
 function setup() {
@@ -58,6 +60,7 @@ function setup() {
 
 function draw(){
   clear() 
+  if (mode == 0){}
   noStroke();
   fill(255);
   for(let i = 0; i < allCoordinates.length; i++){
