@@ -39,7 +39,7 @@ const options = {
 const mappa = new Mappa('Leaflet');
 
 function preload() {
-  data = loadJSON('./data/earthquake_data');
+  data = loadJSON('./assets/earthquake_data.geojson');
 }
 
 function setup() {
