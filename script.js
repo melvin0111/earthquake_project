@@ -49,3 +49,10 @@ function setup() {
 function draw(){
   
 }
+
+class Earthquake {
+  constructor() {
+    this.time = 'date';
+    this.
+  }
+}
