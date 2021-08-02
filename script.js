@@ -39,15 +39,9 @@ const options = {
 const mappa = new Mappa('Leaflet');
 
 function setup() {
-  canvas = createCanvas(1000, 600);
+  canvas = createCanvas(window.innerWidth, window.innerHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
-
-  tripsCoordinates.forEach(function (trip) {
-    trip.forEach(function (coordinate) {
-        allCoordinates.push(coordinate)
-      })
-  });
   
 }
 
