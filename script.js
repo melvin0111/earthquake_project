@@ -7,7 +7,7 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate,
- *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width
+ *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
  *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
@@ -39,7 +39,7 @@ const options = {
 const mappa = new Mappa('Leaflet');
 
 function setup() {
-  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  canvas = createCanvas(800, 600);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   
@@ -47,5 +47,5 @@ function setup() {
 
 
 function draw(){
-
+  
 }
