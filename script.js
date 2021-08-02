@@ -7,7 +7,7 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate,
- *    keyCode, tripsCoordinates, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
+ *    keyCode, tripsCoordinates, preload, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
  *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
@@ -47,11 +47,23 @@ function setup() {
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   tripsCoordinates = myMap.geoJSON(data, "LineString");
+  
+   tripsCoordinates.forEach(function (trip) {
+    trip.forEach(function (coordinate) {
+        allCoordinates.push(coordinate)
+      })
+  });
 }
 
 
 function draw(){
-  
+  clear() 
+  noStroke();
+  fill(255);
+  for(let i = 0; i < allCoordinates.length; i++){
+    let pos = myMap.latLngToPixel(allCoordinates[i][1], allCoordinates[i][0])
+    ellipse(pos.x, pos.y, 5, 5);
+  }
 }
 
 class Earthquake {
