@@ -10,18 +10,7 @@ let canvas;
 let myMap;
 let pixels1;
 let pixels2;
-
-class Earthquake {
-    constructor(date, time, latitude, longitude, type, magnitude) {
-      this.date = date;
-      this.time = time;
-      this.latitude = latitude;
-      this.longitude = longitude;
-      this.type = type;
-      this.magnitude = magnitude;
-    }
-  }
-
+let earthquakesGlobal = earthquakes
   
 const options = {
   lat: 40,
@@ -37,12 +26,10 @@ function setup() {
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   
-  console.log(earthquakes[1]);
+  console.log(earthquakes[0].Date);
   
 }
 
-let testEarthquake1 = new Earthquake(0, 0, 40, 74, 0, 10);
-let testEarthquake2 = new Earthquake(0, 0, 30, 35, 0, 20);
 function draw(){
     clear();
   
