@@ -34,10 +34,13 @@ function draw(){
     clear();
   
     for (let i = 0; i < 1000; i++) {
-      let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
-      colorMode(HSB);
-      fill(100, 100, 100);
-      ellipse(pixels.x, pixels.y, earthquakes[i].Magnitude * 2);
+      if (Number(earthquakes[i].Date.slice(-2)) === 65) {
+        let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
+        colorMode(HSB);
+        fill(100, 100, 100);
+        ellipse(pixels.x, pixels.y, (10 ** (earthquakes[i].Magnitude / 3.3)) / (10));
+        console.log(earthquakes[i].Date.slice(-2));
+      }
     }
 }
 
