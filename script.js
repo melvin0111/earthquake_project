@@ -3,7 +3,7 @@
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
- *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
+ *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, windowHeight, windowWidth, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
 let canvas;
@@ -33,7 +33,7 @@ const mappa = new Mappa('Leaflet');
 
 
 function setup() {
-  canvas = createCanvas(800, 600);
+  canvas = createCanvas(windowWidth, windowHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   
@@ -46,7 +46,7 @@ let testEarthquake2 = new Earthquake(0, 0, 30, 35, 0, 20);
 function draw(){
     clear();
   
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 1000; i++) {
       let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
       colorMode(HSB);
       fill(100, 100, 100);
