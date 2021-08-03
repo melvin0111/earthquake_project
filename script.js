@@ -7,31 +7,27 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate,
- *    keyCode, tripsCoordinates, preload, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
- *    UP_ARROW, DOWN_ARROW, textSize, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
+ *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
+ *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
-
-let mode;
 
 let canvas;
 let myMap;
-let tripsCoordinates;
-let allCoordinates = [];
-let data;
+let pixels1;
+let pixels2;
 
-let delta = 0; 
-let coordinate = 0; 
+class Earthquake {
+    constructor(date, time, latitude, longitude, type, magnitude) {
+      this.date = date;
+      this.time = time;
+      this.latitude = latitude;
+      this.longitude = longitude;
+      this.type = type;
+      this.magnitude = magnitude;
+    }
+  }
 
-let origin; 
-let originVector;  
-let destination; 
-let destinationVector;
-
-let taxiPosition;
-let size;
-let speed;
-let color;
-
+  
 const options = {
   lat: 40,
   lng: 5,
@@ -41,53 +37,29 @@ const options = {
 const mappa = new Mappa('Leaflet');
 
 function preload() {
-  data = loadJSON('assets/earthquake_data.geojson');
+  // data = loadJSON('assets/earthquake_data.geojson');
 }
 
 function setup() {
-  // mode = 0;
   canvas = createCanvas(800, 600);
-  // textSize(20);
-  
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
-  tripsCoordinates = myMap.geoJSON(data, "LineString");
   
-   tripsCoordinates.forEach(function (trip) {
-    trip.forEach(function (coordinate) {
-        allCoordinates.push(coordinate)
-      })
-  });
+  // let tripsCoordinates = myMap.geoJSON(data, "LineString");
 }
 
-
+let testEarthquake1 = new Earthquake(0, 0, 40, 74, 0, 10);
+let testEarthquake2 = new Earthquake(0, 0, 30, 35, 0, 20);
 function draw(){
-  clear() 
-  if (mode == 0){
-    text('Press enter to start', 200, 400)
-  }
-  if (mode == 1){
-  noStroke();
-  fill(255);
-  for(let i = 0; i < allCoordinates.length; i++){
-    let pos = myMap.latLngToPixel(allCoordinates[i][1], allCoordinates[i][0])
-    ellipse(pos.x, pos.y, 5, 5);
-    }
-  }
+    clear();
+    pixels1 = myMap.latLngToPixel(testEarthquake1.latitude, testEarthquake1.longitude);
+    colorMode(HSB)
+    fill(100,100,100);
+    ellipse(pixels1.x, pixels1.y, 10);
+
+    pixels2 = myMap.latLngToPixel(testEarthquake2.latitude, testEarthquake2.longitude);
+    colorMode(HSB)
+    fill(100,100,100);
+    ellipse(pixels2.x, pixels2.y, 10);
 }
 
-function keyPressed(){
-  if (keyCode === 32){
-    mode=1;
-  }
-}
-class Earthquake {
-  constructor(date, time, latitude, longitude, type, magnitude) {
-    this.date = date;
-    this.time = time;
-    this.latitude = latitude;
-    this.longitude = longitude;
-    this.type = type;
-    this.magnitude = magnitude;
-  }
-}
