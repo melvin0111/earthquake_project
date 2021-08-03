@@ -46,7 +46,7 @@ let testEarthquake2 = new Earthquake(0, 0, 30, 35, 0, 20);
 function draw(){
     clear();
   
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10000; i++) {
       let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
       colorMode(HSB);
       fill(100, 100, 100);
