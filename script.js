@@ -31,17 +31,13 @@ const options = {
 }
 const mappa = new Mappa('Leaflet');
 
-function preload() {
-  // data = loadJSON('assets/earthquake_data.geojson');
-}
 
 function setup() {
   canvas = createCanvas(800, 600);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   
-  // let tripsCoordinates = myMap.geoJSON(data, "LineString");
-  console.log(earthquakes[0]);
+  console.log(earthquakes[1]);
   
 }
 
@@ -49,14 +45,12 @@ let testEarthquake1 = new Earthquake(0, 0, 40, 74, 0, 10);
 let testEarthquake2 = new Earthquake(0, 0, 30, 35, 0, 20);
 function draw(){
     clear();
-    pixels1 = myMap.latLngToPixel(testEarthquake1.latitude, testEarthquake1.longitude);
-    colorMode(HSB)
-    fill(100,100,100);
-    ellipse(pixels1.x, pixels1.y, 10);
-
-    pixels2 = myMap.latLngToPixel(testEarthquake2.latitude, testEarthquake2.longitude);
-    colorMode(HSB)
-    fill(100,100,100);
-    ellipse(pixels2.x, pixels2.y, 10);
+  
+    for (let i = 0; i < 1000; i++) {
+      let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
+      colorMode(HSB);
+      fill(100, 100, 100);
+      ellipse(pixels.x, pixels.y, earthquakes[i].Magnitude * 2);
+    }
 }
 
