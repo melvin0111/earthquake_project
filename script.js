@@ -25,13 +25,13 @@ function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
-  
-  console.log(earthquakes[0].Date);
-  
 }
 
 function draw(){
-    clear();
+    clear(); 
+    /* this needs to be used to reset the position of the circles every 
+    *  frame, so it is updated when the tile map is moved/resized
+    */
   
     for (let i = 0; i < 1000; i++) {
       if (Number(earthquakes[i].Date.slice(-2)) === 65) {
