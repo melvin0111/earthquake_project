@@ -10,6 +10,8 @@ let canvas;
 let myMap;
 let dateSlider;
 let dateText;
+let canvasWidth;
+let canvasHeight;
   
 const options = {
   lat: 40,
@@ -22,13 +24,16 @@ const mappa = new Mappa('Leaflet');
 
 function setup() {
   // canvas = createCanvas(windowWidth, windowHeight);
-  canvas = createCanvas(800, 600);
+  canvasWidth = 800;
+  canvasHeight = 600;
+  
+  
+  canvas = createCanvas(canvasWidth, canvasHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   dateSlider = createSlider(1965, 2016, 1965, 1);
-  dateSlider.position(10, 650);
+  dateSlider.position(10, canvasHeight + 10);
   dateSlider.style('width', '300px');
-  dateText = text('', 620, 10)
 }
 
 function draw(){
@@ -37,15 +42,14 @@ function draw(){
   *  frame, so it is updated when the tile map is moved/resized
   */
 
-  text(dateSlider.value(), 0, 600);
+  text(`Year: ${dateSlider.value()}`, 0, canvasHeight);
   for (let i = 0; i < earthquakes.length; i++) {
-    if (Number(earthquakes[i].Date.slice(-2)) === 65) {
+    if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
       let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
       colorMode(HSB);
       fill(100, 100, 100);
-      ellipse(pixels.x, pixels.y, (10 ** (earthquakes[i].Magnitude / 3.3)) / (10));
+      ellipse(pixels.x, pixels.y, (10 ** (earthquakes[i].Magnitude / 3.2)) / (10));
     }
   }
-  console.log(dateSlider.value());
 }
 
