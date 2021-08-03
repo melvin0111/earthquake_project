@@ -9,6 +9,7 @@
 let canvas;
 let myMap;
 let dateSlider;
+let dateText;
   
 const options = {
   lat: 40,
@@ -20,28 +21,31 @@ const mappa = new Mappa('Leaflet');
 
 
 function setup() {
-  canvas = createCanvas(windowWidth, windowHeight);
+  // canvas = createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(800, 600);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   dateSlider = createSlider(1965, 2016, 1965, 1);
-  dateSlider.position(100, 10);
+  dateSlider.position(10, 650);
   dateSlider.style('width', '300px');
+  dateText = text('', 620, 10)
 }
 
 function draw(){
-    clear(); 
-    /* this needs to be used to reset the position of the circles every 
-    *  frame, so it is updated when the tile map is moved/resized
-    */
-  
-    for (let i = 0; i < 1000; i++) {
-      if (Number(earthquakes[i].Date.slice(-2)) === 65) {
-        let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
-        colorMode(HSB);
-        fill(100, 100, 100);
-        ellipse(pixels.x, pixels.y, (10 ** (earthquakes[i].Magnitude / 3.3)) / (10));
-        console.log(earthquakes[i].Date.slice(-2));
-      }
+  clear(); 
+  /* this needs to be used to reset the position of the circles every 
+  *  frame, so it is updated when the tile map is moved/resized
+  */
+
+  text(dateSlider.value(), 0, 600);
+  for (let i = 0; i < earthquakes.length; i++) {
+    if (Number(earthquakes[i].Date.slice(-2)) === 65) {
+      let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
+      colorMode(HSB);
+      fill(100, 100, 100);
+      ellipse(pixels.x, pixels.y, (10 ** (earthquakes[i].Magnitude / 3.3)) / (10));
     }
+  }
+  console.log(dateSlider.value());
 }
 
