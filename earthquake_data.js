@@ -1,4 +1,4 @@
-[
+let earthquakes = [
   {
     "Date": "1/2/65",
     "Time": "13:44:18",
