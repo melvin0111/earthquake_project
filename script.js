@@ -8,7 +8,7 @@
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate,
  *    keyCode, tripsCoordinates, preload, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
- *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
+ *    UP_ARROW, DOWN_ARROW, textSize, LEFT_ARROW, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
 let mode;
@@ -45,7 +45,10 @@ function preload() {
 }
 
 function setup() {
+  // mode = 0;
   canvas = createCanvas(800, 600);
+  // textSize(20);
+  
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   tripsCoordinates = myMap.geoJSON(data, "LineString");
@@ -60,15 +63,24 @@ function setup() {
 
 function draw(){
   clear() 
-  if (mode == 0){}
+  if (mode == 0){
+    text('Press enter to start', 200, 400)
+  }
+  if (mode == 1){
   noStroke();
   fill(255);
   for(let i = 0; i < allCoordinates.length; i++){
     let pos = myMap.latLngToPixel(allCoordinates[i][1], allCoordinates[i][0])
     ellipse(pos.x, pos.y, 5, 5);
+    }
   }
 }
 
+function keyPressed(){
+  if (keyCode === 32){
+    mode=1;
+  }
+}
 class Earthquake {
   constructor(date, time, latitude, longitude, type, magnitude) {
     this.date = date;
