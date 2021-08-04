@@ -41,7 +41,8 @@ function draw(){
   /* this needs to be used to reset the position of the circles every 
   *  frame, so it is updated when the tile map is moved/resized
   */
-
+  colorMode(HSB);
+  fill(0, 0, 100);
   text(`Year: ${dateSlider.value()}`, 0, canvasHeight);
   for (let i = 0; i < earthquakes.length; i++) {
     if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
