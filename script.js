@@ -54,7 +54,7 @@ function draw() {
         earthquakes[i].Longitude
       );
       colorMode(HSB);
-      let hue = 360 - (earthquakes[i].Magnitude * 36) % 360;
+      let hue = 360 - (1.75 * earthquakes[i].Magnitude * 36 + 200) % 360;
       fill(hue, 100, 100);
       ellipse(pixels.x, pixels.y, 10 ** (earthquakes[i].Magnitude / 3.2) / 10);
       if (i == 0) {
@@ -69,6 +69,7 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   dateSlider.position(10, windowHeight - 50);
   
-  myMap.mappaDiv.style.width = canvas.width + 'px';
-      myMap.mappaDiv.style.height = canvas.height + 'px';
+  // Logan: Trying out a resizing solution from https://github.com/cvalenzuela/Mappa/issues/31
+  myMap.mappaDiv.style.width = windowWidth + 'px';
+  myMap.mappaDiv.style.height = windowHeight + 'px';
 }
