@@ -43,7 +43,7 @@ function draw(){
   */
   colorMode(HSB);
   fill(0, 0, 100);
-  text(`Year: ${dateSlider.value()}`, 0, canvasHeight);
+  text(`Year: ${dateSlider.value()}`, 0, canvasHeight-10);
   for (let i = 0; i < earthquakes.length; i++) {
     if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
       let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
