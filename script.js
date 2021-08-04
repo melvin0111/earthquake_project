@@ -23,12 +23,12 @@ const mappa = new Mappa('Leaflet');
 
 
 function setup() {
-  // canvas = createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, windowHeight);
   canvasWidth = 800;
   canvasHeight = 600;
   
   
-  canvas = createCanvas(canvasWidth, canvasHeight);
+  // canvas = createCanvas(canvasWidth, canvasHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   dateSlider = createSlider(1965, 2016, 1965, 1);
@@ -53,4 +53,6 @@ function draw(){
     }
   }
 }
+
+function 
 
