@@ -32,7 +32,7 @@ function setup() {
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   dateSlider = createSlider(1965, 2016, 1965, 1);
-  dateSlider.position(10, windowHeight - 50);
+  
   dateSlider.style('width', '300px');
 }
 
@@ -43,7 +43,7 @@ function draw(){
   */
   colorMode(HSB);
   fill(0, 0, 100);
-  text(`Year: ${dateSlider.value()}`, 0, canvasHeight-10);
+  text(`Year: ${dateSlider.value()}`, 10, windowHeight - 60);
   for (let i = 0; i < earthquakes.length; i++) {
     if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
       let pixels = myMap.latLngToPixel(earthquakes[i].Latitude, earthquakes[i].Longitude);
@@ -56,5 +56,6 @@ function draw(){
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  dateSlider.position(10, windowHeight - 50);
 }
 
