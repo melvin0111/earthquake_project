@@ -32,7 +32,7 @@ function setup() {
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas); 
   dateSlider = createSlider(1965, 2016, 1965, 1);
-  dateSlider.position(10, canvasHeight + 10);
+  dateSlider.position(10, windowHeight - 50);
   dateSlider.style('width', '300px');
 }
 
