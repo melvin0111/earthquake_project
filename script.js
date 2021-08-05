@@ -111,8 +111,8 @@ function secondSlide() {
   colorMode;
   fill(255, 255, 255);
   textSize(40);
-  text("What is an earthquake?", windowWidth/14, windowHeight/10)
-  textSize(25)
-  // textWrap(WORD)
-  text("--", windowWidth/14, window/12)
+  text("What is an earthquake?", windowWidth/25, windowHeight/10)
+  textSize(20);
+  text("Earthquakes are caused by tectonic plates. Tectonic plates are constantly moving slowly, but they become stuck at their edges due to friction. When the stress on the edge overcomes the friction, an earthquake occurs, releasing energy in the form of waves that travel through the earth's crust and cause the shaking we experience.",
+       windowWidth/25, windowHeight/6, windowWidth + 10, windowHeight/2 + 10)
 }
