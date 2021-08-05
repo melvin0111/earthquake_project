@@ -16,7 +16,7 @@ let mode;
 const options = {
   lat: 40,
   lng: 5,
-  zoom: 2,
+  zoom: 3,
   style: "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
 };
 const mappa = new Mappa("Leaflet");
