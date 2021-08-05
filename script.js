@@ -2,7 +2,7 @@
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
- *    UP_ARROW, DOWN_ARROW, textSize, textFont, fontBold, loadFont, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
+ *    UP_ARROW, DOWN_ARROW, textWrap, WORD, textSize, textFont, fontBold, loadFont, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
 let canvas;
@@ -110,6 +110,9 @@ function firstSlide() {
 function secondSlide() {
   colorMode;
   fill(255, 255, 255);
-  textSize(30);
-  text("What is an earthquake?", windowWidth/2, windowHeight/2)
+  textSize(40);
+  text("What is an earthquake?", windowWidth/14, windowHeight/10)
+  textSize(25)
+  // textWrap(WORD)
+  text("--", windowWidth/14, window/12)
 }
