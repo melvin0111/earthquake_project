@@ -115,43 +115,46 @@ function secondSlide() {
   textSize(20);
   textWrap(WORD);
   text(
-    "Earthquakes are caused by tectonic plates. Tectonic plates are constantly moving slowly, but they become stuck at their edges due to friction. When the stress on the edge overcomes the friction, an earthquake occurs, releasing energy in the form of waves that travel through the earth's crust and cause the shaking we experience.",
+    "Earthquakes are caused by tectonic plates. Tectonic plates are constantly moving slowly, but they become stuck at their edges due to friction. When the stress on the edge overcomes the friction, an earthquake occurs, releasing energy in the form of waves that travel through the earth's crust and causes the shaking we experience.",
     windowWidth / 25,
     windowHeight / 7,
     1300,
     windowHeight / 2
   );
   textSize(40);
-  text("Where are the earthquakes?", windowWidth / 25, windowHeight / 3)
+  text("Where are the earthquakes?", windowWidth / 25, windowHeight / 3);
   textSize(20);
   textWrap(WORD);
-  text("Earthquakes can occur in any location, but history shows that they follow the same general patterns year after year, primarily in three large zones of the earth: the circum-Pacific seismic belt (Ring of Fire), the Alpide earthquake belt, and the mid-Atlantic Ridge.",     
+  text(
+    "Earthquakes can occur in any location, but history shows that they follow the same general patterns year after year, primarily in three large zones of the earth: the circum-Pacific seismic belt (Ring of Fire), the Alpide earthquake belt, and the mid-Atlantic Ridge.",
     windowWidth / 25,
     windowHeight / 2.65,
     1300,
     windowHeight / 2
-    );
+  );
   textSize(40);
-  text("How often do earthquakes occur?", windowWidth / 25, windowHeight / 1.8);
-  textSize(20);
-  textWrap(WORD)
-  text("Every year, it is estimated that there are 500,000 detectable earthquakes around the world. 100,000 of them that can be felt, and 100 of them cause damage.",     
-    windowWidth / 25,
-    windowHeight / 1.65,
-    1300,
-    windowHeight / 2
-    );
-  textSize(40);
-  text("Can we predict earthquakes?", windowWidth / 25, windowHeight / 1.325);
+  text("How often do earthquakes occur?", windowWidth / 25, windowHeight / 1.9);
   textSize(20);
   textWrap(WORD);
-  text("No, earthquakes cannot be predicted. Seismologists agree they don't know how and don't see predictions in the foreseeable future. ",
+  text(
+    "Every year, it is estimated that there are 500,000 detectable earthquakes around the world. 100,000 of them that can be felt, and 100 of them cause damage.",
     windowWidth / 25,
-    windowHeight / 1.25,
+    windowHeight / 1.75,
     1300,
     windowHeight / 2
-    );
+  );
+  textSize(40);
+  text("Can we predict earthquakes?", windowWidth / 25, windowHeight / 1.4);
+  textSize(20);
+  textWrap(WORD);
+  text(
+    "No, earthquakes cannot be predicted. Seismologists agree they don't know how and don't see predictions in the foreseeable future. ",
+    windowWidth / 25,
+    windowHeight / 1.325,
+    1300,
+    windowHeight / 2
+  );
   colorMode;
   fill(255, 236, 80);
-  text("Press Spacebar", windowWidth/2 - 100, windowHeight/1.1);
+  text("Press Spacebar", windowWidth / 2 - 100, windowHeight / 1.15);
 }
