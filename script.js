@@ -49,7 +49,7 @@ function draw() {
   if (mode == 0) {
     firstSlide();
   }
-  if (mode == 1){
+  if (mode == 1) {
     secondSlide();
   }
   if (mode == 2) {
@@ -111,8 +111,35 @@ function secondSlide() {
   colorMode;
   fill(255, 255, 255);
   textSize(40);
-  text("What is an earthquake?", windowWidth/25, windowHeight/10)
+  text("What is an earthquake?", windowWidth / 25, windowHeight / 10);
   textSize(20);
-  text("Earthquakes are caused by tectonic plates. Tectonic plates are constantly moving slowly, but they become stuck at their edges due to friction. When the stress on the edge overcomes the friction, an earthquake occurs, releasing energy in the form of waves that travel through the earth's crust and cause the shaking we experience.",
-       windowWidth/25, windowHeight/6, windowWidth + 10, windowHeight/2 + 10)
+  textWrap(WORD);
+  text(
+    "Earthquakes are caused by tectonic plates. Tectonic plates are constantly moving slowly, but they become stuck at their edges due to friction. When the stress on the edge overcomes the friction, an earthquake occurs, releasing energy in the form of waves that travel through the earth's crust and cause the shaking we experience.",
+    windowWidth / 25,
+    windowHeight / 6,
+    1300,
+    windowHeight / 2
+  );
+  textSize(40);
+  text("Where are the earthquakes?", windowWidth / 25, windowHeight / 3)
+  textSize(20);
+  textWrap(WORD);
+  text("Earthquakes can occur in any location, but history shows that they follow the same general patterns year after year, primarily in three large zones of the earth: the circum-Pacific seismic belt (Ring of Fire), the Alpide earthquake belt, and the mid-Atlantic Ridge.",     
+    windowWidth / 25,
+    windowHeight / 2.5,
+    1300,
+    windowHeight / 2
+    );
+  textSize(40);
+  text("How often do earthquakes occur?", windowWidth / 25, windowHeight / 1.8);
+  textSize(20);
+  textWrap(WORD)
+  text("Every year, it is estimated that there are 500,000 detectable earthquakes around the world. 100,000 of them that can be felt, and 100 of them cause damage.",     
+    windowWidth / 25,
+    windowHeight / 1.75,
+    1300,
+    windowHeight / 2
+    );
+  
 }
