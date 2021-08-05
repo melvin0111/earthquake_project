@@ -72,6 +72,12 @@ function windowResized() {
   // Logan: Trying out a resizing solution from https://github.com/cvalenzuela/Mappa/issues/31
   myMap.mappaDiv.style.width = windowWidth + 'px';
   myMap.mappaDiv.style.height = windowHeight + 'px';
-  myMap.canvas.style.width = windowWidth + 'px';
-  myMap.canvas.style.height = windowHeight + 'px';
+}
+function firstSlide(){
+    colorMode;
+    fill(255, 255, 255);
+    text("Press Enter", windowWidth/2, windowHeight/2);
+}
+function secondSlide(){
+  
 }
