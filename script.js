@@ -117,7 +117,7 @@ function secondSlide() {
   text(
     "Earthquakes are caused by tectonic plates. Tectonic plates are constantly moving slowly, but they become stuck at their edges due to friction. When the stress on the edge overcomes the friction, an earthquake occurs, releasing energy in the form of waves that travel through the earth's crust and cause the shaking we experience.",
     windowWidth / 25,
-    windowHeight / 6,
+    windowHeight / 7,
     1300,
     windowHeight / 2
   );
@@ -127,7 +127,7 @@ function secondSlide() {
   textWrap(WORD);
   text("Earthquakes can occur in any location, but history shows that they follow the same general patterns year after year, primarily in three large zones of the earth: the circum-Pacific seismic belt (Ring of Fire), the Alpide earthquake belt, and the mid-Atlantic Ridge.",     
     windowWidth / 25,
-    windowHeight / 2.5,
+    windowHeight / 2.65,
     1300,
     windowHeight / 2
     );
