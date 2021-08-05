@@ -29,7 +29,7 @@ function setup() {
 
   textFont("Georgia");
   fontBold = loadFont("assets/Bold.ttf");
-  
+
   // canvas = createCanvas(canvasWidth, canvasHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas, function() {
@@ -46,31 +46,38 @@ function draw() {
   /* this needs to be used to reset the position of the circles every
    *  frame, so it is updated when the tile map is moved/resized
    */
-  if (mode == 0){
+  if (mode == 0) {
     firstSlide();
   }
   if (mode == 1){
-  colorMode(HSB);
-  fill(0, 0, 100);
-  textSize(20)
-  text(`Year: ${dateSlider.value()}`, 10, windowHeight - 60);
-  for (let i = 0; i < earthquakes.length; i++) {
-    if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
-      // Options to support dynamic window resizing:
-      //   A. Store initial width/height, and adjust pixel values based on the current and initial sizes
-      //   B. Figure out how to properly tell mappa to resize the map
-      let pixels = myMap.latLngToPixel(
-        earthquakes[i].Latitude,
-        earthquakes[i].Longitude
-      );
-      colorMode(HSB);
-      let hue = 360 - (1.75 * earthquakes[i].Magnitude * 36 + 200) % 360;
-      fill(hue, 100, 100);
-      ellipse(pixels.x, pixels.y, 10 ** (earthquakes[i].Magnitude / 3.2) / 10);
-      if (i == 0) {
-        console.log(hue);
+    secondSlide();
+  }
+  if (mode == 2) {
+    colorMode(HSB);
+    fill(0, 0, 100);
+    textSize(20);
+    text(`Year: ${dateSlider.value()}`, 10, windowHeight - 60);
+    for (let i = 0; i < earthquakes.length; i++) {
+      if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
+        // Options to support dynamic window resizing:
+        //   A. Store initial width/height, and adjust pixel values based on the current and initial sizes
+        //   B. Figure out how to properly tell mappa to resize the map
+        let pixels = myMap.latLngToPixel(
+          earthquakes[i].Latitude,
+          earthquakes[i].Longitude
+        );
+        colorMode(HSB);
+        let hue = 360 - ((1.75 * earthquakes[i].Magnitude * 36 + 200) % 360);
+        fill(hue, 100, 100);
+        ellipse(
+          pixels.x,
+          pixels.y,
+          10 ** (earthquakes[i].Magnitude / 3.2) / 10
+        );
+        if (i == 0) {
+          console.log(hue);
+        }
       }
-    }
     }
   }
 }
@@ -79,28 +86,30 @@ function windowResized() {
   text(`Year: ${dateSlider.value()}`, 10, windowHeight - 60);
   resizeCanvas(windowWidth, windowHeight);
   dateSlider.position(10, windowHeight - 50);
-  
+
   // Logan: Trying out a resizing solution from https://github.com/cvalenzuela/Mappa/issues/31
-  myMap.mappaDiv.style.width = windowWidth + 'px';
-  myMap.mappaDiv.style.height = windowHeight + 'px';
+  myMap.mappaDiv.style.width = windowWidth + "px";
+  myMap.mappaDiv.style.height = windowHeight + "px";
 }
 
 function keyPressed() {
   if (keyCode === 13) {
     mode = 1;
-  }
-  else if (keyCode === 32){
+  } else if (keyCode === 32) {
     mode = 2;
   }
 }
 
-function firstSlide(){
-    colorMode;
-    fill(255, 255, 255);
-    textSize(60)
-    text("Press Enter", windowWidth/2 - 150, windowHeight/2);
+function firstSlide() {
+  colorMode;
+  fill(255, 255, 255);
+  textSize(60);
+  text("Press Enter", windowWidth / 2 - 150, windowHeight / 2);
 }
 
-function secondSlide(){
-  
+function secondSlide() {
+  colorMode;
+  fill(255, 255, 255);
+  textSize(30);
+  text("What is an earthquake?", windowWidth/2, windowHeight/2)
 }
