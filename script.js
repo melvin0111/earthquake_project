@@ -1,6 +1,6 @@
 // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
- *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
+ *    L, HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
  *    UP_ARROW, DOWN_ARROW, textWrap, WORD, textSize, textFont, fontBold, loadFont, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
@@ -80,7 +80,6 @@ function draw() {
       }
     }
   }
-  L.marker([50.5, 30.5]).addTo(myMap);
 }
 
 function windowResized() {
