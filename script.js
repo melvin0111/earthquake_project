@@ -2,7 +2,7 @@
 /* global
  *    HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
- *    UP_ARROW, DOWN_ARROW, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
+ *    UP_ARROW, DOWN_ARROW, textSize, textFont, fontBold, loadFont, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
 let canvas;
@@ -11,6 +11,7 @@ let dateSlider;
 let dateText;
 let canvasWidth;
 let canvasHeight;
+let mode;
 
 const options = {
   lat: 40,
@@ -21,10 +22,14 @@ const options = {
 const mappa = new Mappa("Leaflet");
 
 function setup() {
+  mode = 0;
   canvas = createCanvas(windowWidth, windowHeight);
   canvasWidth = 800;
   canvasHeight = 600;
 
+  textFont("Georgia");
+  fontBold = loadFont("assets/Bold.ttf");
+  
   // canvas = createCanvas(canvasWidth, canvasHeight);
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas, function() {
@@ -41,8 +46,13 @@ function draw() {
   /* this needs to be used to reset the position of the circles every
    *  frame, so it is updated when the tile map is moved/resized
    */
+  if (mode == 0){
+    firstSlide();
+  }
+  if (mode == 1){
   colorMode(HSB);
   fill(0, 0, 100);
+  textSize(20)
   text(`Year: ${dateSlider.value()}`, 10, windowHeight - 60);
   for (let i = 0; i < earthquakes.length; i++) {
     if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
@@ -61,6 +71,7 @@ function draw() {
         console.log(hue);
       }
     }
+    }
   }
 }
 
@@ -73,11 +84,23 @@ function windowResized() {
   myMap.mappaDiv.style.width = windowWidth + 'px';
   myMap.mappaDiv.style.height = windowHeight + 'px';
 }
+
+function keyPressed() {
+  if (keyCode === 13) {
+    mode = 1;
+  }
+  else if (keyCode === 32){
+    mode = 2;
+  }
+}
+
 function firstSlide(){
     colorMode;
     fill(255, 255, 255);
-    text("Press Enter", windowWidth/2, windowHeight/2);
+    textSize(60)
+    text("Press Enter", windowWidth/2 - 150, windowHeight/2);
 }
+
 function secondSlide(){
   
 }
