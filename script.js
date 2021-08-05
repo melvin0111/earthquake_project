@@ -137,9 +137,21 @@ function secondSlide() {
   textWrap(WORD)
   text("Every year, it is estimated that there are 500,000 detectable earthquakes around the world. 100,000 of them that can be felt, and 100 of them cause damage.",     
     windowWidth / 25,
-    windowHeight / 1.75,
+    windowHeight / 1.65,
     1300,
     windowHeight / 2
     );
-  
+  textSize(40);
+  text("Can we predict earthquakes?", windowWidth / 25, windowHeight / 1.325);
+  textSize(20);
+  textWrap(WORD);
+  text("No, earthquakes cannot be predicted. Seismologists agree they don't know how and don't see predictions in the foreseeable future. ",
+    windowWidth / 25,
+    windowHeight / 1.25,
+    1300,
+    windowHeight / 2
+    );
+  colorMode;
+  fill(255, 236, 80);
+  text("Press Spacebar", windowWidth/2 - 100, windowHeight/1.1);
 }
