@@ -2,7 +2,7 @@
 /* global
  *    L, HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
- *    UP_ARROW, DOWN_ARROW, textWrap, WORD, textSize, textFont, fontBold, loadFont, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
+ *    UP_ARROW, DOWN_ARROW, textWrap, createButton, WORD, textSize, textFont, fontBold, loadFont, LEFT_ARROW, windowHeight, windowWidth, windowResized, RIGHT_ARROW, Mappa, loadJSON, clear, ellipse, createVector, createSlider
  */
 
 let canvas;
@@ -12,6 +12,7 @@ let dateText;
 let canvasWidth;
 let canvasHeight;
 let mode;
+let button;
 
 const options = {
   lat: 40,
@@ -39,6 +40,11 @@ function setup() {
   dateSlider = createSlider(1965, 2016, 1965, 1);
   dateSlider.position(10, windowHeight - 50);
   dateSlider.style("width", "300px");
+  
+  button = createButton('Marker');
+  button.position(350, windowHeight - 50);
+  dateSlider.style("width", "300px");
+  
 }
 
 function draw() {
