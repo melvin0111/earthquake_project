@@ -79,7 +79,7 @@ function draw() {
         }
       }
     }
-    L.marker([50.5, 30.5]).addTo(myMap);
+    L.marker([50.5, 30.5]).addTo(myMap.map);
   }
 }
 
