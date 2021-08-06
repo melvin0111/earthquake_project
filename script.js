@@ -45,6 +45,8 @@ function setup() {
   button = createButton('Marker');
   button.position(350, windowHeight - 50);
   dateSlider.style("width", "300px");
+
+  L.marker([pixels.x, pixels.y]).addTo(myMap.map);
   
 }
 
@@ -86,7 +88,6 @@ function draw() {
           console.log(hue);
         }
       }
-      L.marker([pixels.x, 30.5]).addTo(myMap.map).bindPopup("I am");
     }
   }
 }
