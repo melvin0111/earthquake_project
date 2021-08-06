@@ -45,8 +45,7 @@ function setup() {
   button = createButton('Marker');
   button.position(350, windowHeight - 50);
   dateSlider.style("width", "300px");
-
-  L.marker([pixels.x, pixels.y]).addTo(myMap.map);
+  
   
 }
 
@@ -108,6 +107,13 @@ function keyPressed() {
   } else if (keyCode === 32) {
     mode = 2;
   }
+}
+
+function mousePressed() {
+  var popup = L.popup()
+    .setLatLng(50, 50)
+    .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+    .openOn(myMap.map);
 }
 
 function firstSlide() {
