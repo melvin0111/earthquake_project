@@ -111,7 +111,7 @@ function keyPressed() {
 
 function mousePressed() {
   var popup = L.popup()
-    .setLatLng(50, 50)
+    .setLatLng([50, 50])
     .setContent('<p>Hello world!<br />This is a nice popup.</p>')
     .openOn(myMap.map);
 }
