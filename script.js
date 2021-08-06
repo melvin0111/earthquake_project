@@ -14,6 +14,7 @@ let canvasHeight;
 let mode;
 let button;
 
+
 const options = {
   lat: 40,
   lng: 5,
@@ -79,13 +80,14 @@ function draw() {
           pixels.x,
           pixels.y,
           10 ** (earthquakes[i].Magnitude / 3.2) / 10
+          
         );
         if (i == 0) {
           console.log(hue);
         }
       }
+      L.marker([pixels.x, 30.5]).addTo(myMap.map).bindPopup("I am");
     }
-    L.marker([50.5, 30.5]).addTo(myMap.map);
   }
 }
 
