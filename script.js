@@ -82,14 +82,26 @@ function draw() {
           pixels.y,
           10 ** (earthquakes[i].Magnitude / 3.2) / 10          
         );
-        L.popup()
-        .setLatLng([pixels.x, pixels.y])
-        .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-        .openOn(myMap.map);
+        // L.popup()
+        // .setLatLng([pixels.x, pixels.y])
+        // .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+        // .openOn(myMap.map);
         if (i == 0) {
           console.log(hue);
         }
       }
+    }
+  }
+  if (mode == 3) {
+    for (let i = 0; i < earthquakes.length; i++) {
+      if (Number(earthquakes[i].Date.slice(-2)) === dateSlider.value() % 100) {
+        // Options to support dynamic window resizing:
+        //   A. Store initial width/height, and adjust pixel values based on the current and initial sizes
+        //   B. Figure out how to properly tell mappa to resize the map
+        let pixels = myMap.latLngToPixel(
+          earthquakes[i].Latitude,
+          earthquakes[i].Longitude
+        );
     }
   }
 }
@@ -110,7 +122,7 @@ function keyPressed() {
   } else if (keyCode === 32) {
     mode = 2;
   } else if (keyCode === 48) {
-    
+    mode = 3;
   }
 }
 
