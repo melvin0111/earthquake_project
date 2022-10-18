@@ -1,4 +1,4 @@
-// Name any p5.js functions we use in `global` so Glitch can recognize them.
+  // Name any p5.js functions we use in `global` so Glitch can recognize them.
 /* global
  *    L, HSB, background, collideRectRect, color, colorMode, createCanvas, fill, frameRate, earthquakes,
  *    keyCode, height, loop, noLoop, noStroke, random, rect, round, stroke, text, width, resizeCanvas,
