@@ -122,7 +122,7 @@ function mousePressed() {
         );
         L.popup()
         .setLatLng([pixels.x, pixels.y])
-        .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+       // .setContent('<p>Hello world!<br />This is a nice popup.</p>')
         .openOn(myMap.map);
       }
       
